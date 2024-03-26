@@ -1,1 +1,11 @@
-*main.c
+# Ignore all
+*
+
+# Unignore .c files
+!*.c
+
+# Unignore .h "header" files
+!*.h
+
+# Uningnore directories
+!*/
