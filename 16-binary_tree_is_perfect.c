@@ -9,9 +9,29 @@
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	int perfect = 0;
-	if (binary_tree_is_full(tree))
-		if (binary_tree_height(tree->left) == binary_tree_height(tree->right))
-			perfect = 1;
+	int perfect_left = 1;
+	int perfect_right = 1;
+
+	if (!tree)
+		return (0);
+
+	if (tree->left && tree->right)
+	{
+		/* if both child nodes exist */
+		if (binary_tree_is_full(tree))
+			if (binary_tree_height(tree->left) == binary_tree_height(tree->right))
+				perfect = 1;	/* if tree is full AND left and right heights are the same */
+
+		/* make sure every child is perfect */
+		perfect_left = binary_tree_is_perfect(tree->left);
+		perfect_right = binary_tree_is_perfect(tree->right);
+		if (perfect_left != 1 || perfect_right != 1)
+			perfect = 0;
+	}
+	else if (!tree->left && !tree->right)
+		perfect = 1;			/* if it's a single node */
+	else
+		perfect = 0;
 
 	return (perfect);
 }
