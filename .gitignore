@@ -4,6 +4,9 @@
 # Unignore .c files
 !*.c
 
+# Ignore main.c files
+*-main.c
+
 # Unignore .h "header" files
 !*.h
 
